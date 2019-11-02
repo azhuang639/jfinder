@@ -1,5 +1,5 @@
 body {
-  background: #fafafa;
+  background: #dcf3fa;
   color: #333333;
   margin-top: 5rem;
 }
@@ -13,11 +13,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: #ffffff;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+  color: yellow;
+}
+
+.site-header .navbar-brand {
+   color: yellow;
+ }
+
+.site-header .navbar-brand:hover {
+  color: yellow;
 }
 
 .site-header .navbar-nav .nav-link.active {

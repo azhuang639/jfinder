@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Search Page</h1>
+<form action = "" class = "form-inline" method = "post">
+    <input type = "text" class = "form-control" placeholder= "Keyword" name = "keyword" value = "{{request.form.keyword}}">
+    <input class = "btn btn-default" type = "submit" value = "Find">
+</form>
+{% if searched %}
+<h2>jfinder - {{ searched }}</h2>
+{% else %}
+<h2>jfinder yeet</h2>
+{% endif %}
+{% endblock content %}
