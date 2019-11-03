@@ -130,6 +130,5 @@ def favorites():
     return render_template("favorites.html", airdates = FavoriteAirdates, categories = FavoriteCategories, questions = FavoriteQuestions, points = FavoritePoints, answers = FavoriteAnswers, title = 'Favorites', len = len(FavoriteQuestions))
 
 if __name__ == '__main__':
-    port =
     app.run(debug=True)
 
