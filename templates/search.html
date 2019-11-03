@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>jfinder search</h1>
+<h1>jfinder search {{searched}}</h1>
 <br/>
 <form action = "" class = "form-inline" method = "post">
     <h5 style = "width: 100px">Keyword</h5>
     <input type = "text" class = "form-control" placeholder= "Keyword" name = "keyword" value = "{{request.form.keyword}}">
     <h5 style = "width: 100px">Category</h5>
     <input type = "text" class = "form-control" placeholder= "Category" name = "category" value = "{{request.form.category}}">
-    <h5 style = "width: 100px">Difficulty</h5>
+    <h5 style = "width: 100px">Value</h5>
     <input type = "text" class = "form-control" placeholder= "Difficulty" name = "difficulty" value = "{{request.form.difficulty}}">
     <h5 style = "width: 100px">Air Date</h5>
     <input type = "date" class = "form-control" name = "airdate" value = "{{request.form.airdate}}" style = "width: 206px">

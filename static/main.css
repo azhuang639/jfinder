@@ -16,7 +16,7 @@ body {
 
 .container > .entry {
   padding: 0.5rem;
-  border-radius: 1rem;
+  /*border-radius: 1rem;*/
   color: black;
 }
 
