@@ -6,17 +6,22 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 500px 100px 200px;
+  grid-template-columns: 475px 150px 100px 150px 100px;
   grid-gap: .5rem;
 }
 
 .container > .entry {
   padding: 0.5rem;
   border-radius: 1rem;
+  color: black;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
+}
+
+.bottomSpace {
+  margin-bottom: 50px;
 }
 
 .bg-steel {

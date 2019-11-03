@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>Search Page</h1>
+<h1>jfinder search</h1>
 <br/>
 <form action = "" class = "form-inline" method = "post">
     <h5 style = "width: 100px">Keyword</h5>
@@ -10,11 +10,11 @@
     <h5 style = "width: 100px">Difficulty</h5>
     <input type = "text" class = "form-control" placeholder= "Difficulty" name = "difficulty" value = "{{request.form.difficulty}}">
     <h5 style = "width: 100px">Air Date</h5>
-    <input type = "date" class = "form-control" name = "airdate" value = "{{request.form.airdate}}" style = "width: 207px">
+    <input type = "date" class = "form-control" name = "airdate" value = "{{request.form.airdate}}" style = "width: 206px">
     <h5 style = "width: 100px">Max #</h5>
     <input type = "number" class = "form-control" placeholder= 0 name = "maxCount" value = "{{request.form.maxCount}}">
     <p style = "width: 100px"></p>
-    <input class = "btn btn-default searchButton" type = "submit" value = "Find">
+    <input class = "btn btn-default searchButton" type = "submit" name = "submit" value = "Find">
 </form>
 <br/>
 
@@ -24,11 +24,18 @@
         {{questions[i]}}
     </div>
     <div class = "entry">
+        {{categories[i]}}
+    </div>
+    <div class = "entry">
         {{points[i]}}
     </div>
     <div class = "entry">
         {{answers[i]}}
     </div>
+    <div class = "entry">
+        {{airdates[i]}}
+    </div>
 </div>
 {%endfor%}
+<div class = "bottomSpace"></div>
 {% endblock content %}
