@@ -15,7 +15,16 @@
     <title>jfinder</title>
     {% endif %}
 </head>
+{% if homepage %}
+<body style = "background-image: url({{ url_for('static', filename = 'trebek.png') }});
+background-position-x: 75%;
+background-position-y: 50%;
+background-attachment: fixed;
+background-size: 40%;
+background-repeat: no-repeat;">
+{% else %}
 <body>
+{% endif %}
 <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">

@@ -4,6 +4,10 @@ body {
   margin-top: 5rem;
 }
 
+.trebek {
+  background-image: url_for("static/trebek.png");
+}
+
 .container {
   display: grid;
   grid-template-columns: 475px 150px 100px 150px 100px;

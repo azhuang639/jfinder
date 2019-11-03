@@ -13,7 +13,7 @@ def get(url):
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', title='Home')
+    return render_template('home.html', title='Home', homepage = True)
 
 @app.route("/search", methods = ["GET", "POST"])
 def search():
