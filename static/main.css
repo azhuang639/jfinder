@@ -10,7 +10,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 475px 150px 100px 150px 100px;
+  grid-template-columns: 475px 150px 100px 150px 100px 100px;
   grid-gap: .5rem;
 }
 
@@ -109,4 +109,10 @@ a.article-title:hover {
 
 .searchButton {
   width: 1000px;
+}
+
+.saveButton {
+  height: 30px;
+  text-align: center;
+  margin: auto;
 }

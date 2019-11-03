@@ -1,4 +1,40 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>Favorites Page</h1>
+<br/>
+{%for i in range(0, len)%}
+<div class = "container">
+    <div class = "entry">
+        {{questions[i]}}
+    </div>
+    <div class = "entry">
+        {{categories[i]}}
+    </div>
+    <div class = "entry">
+        {{points[i]}}
+    </div>
+    <div class = "entry">
+        {{answers[i]}}
+    </div>
+    <div class = "entry">
+        {{airdates[i]}}
+    </div>
+    {% if i == 0 %}
+    <div class = "entry">
+        Unfave?
+    </div>
+    {% else %}
+    <form method = "post">
+        <input class = "btn btn-default saveButton" type = "submit" name = "submit" value = "Remove">
+        <input value = "{{questions[i]}}" type="hidden" name="fquestionEntry">
+        <input value = "{{categories[i]}}" type="hidden" name="fcategoryEntry">
+        <input value = "{{points[i]}}" type="hidden" name="fpointEntry">
+        <input value = "{{answers[i]}}" type= "hidden" name="fanswerEntry">
+        <input value = "{{airdates[i]}}" type= "hidden" name="fairdateEntry">
+    </form>
+    {% endif %}
+
+</div>
+{%endfor%}
+<div class = "bottomSpace"></div>
 {% endblock content %}

@@ -3,6 +3,12 @@ from flask import Flask, render_template, url_for, request, redirect
 
 app = Flask(__name__)
 
+FavoriteQuestions = ["Question"]
+FavoriteCategories = ["Category"]
+FavoritePoints = ["Points"]
+FavoriteAnswers = ["Answer"]
+FavoriteAirdates = ["Airdate"]
+
 def get(url):
     try:
         res = requests.get(url)
@@ -17,17 +23,16 @@ def home():
 
 @app.route("/search", methods = ["GET", "POST"])
 def search():
-    Questions = ["Question"]
-    Points = ["Points"]
-    Answers = ["Answer"]
-    Categories = ["Category"]
-    Airdates = ["Air Date"]
-    keyword = 'base'
-    information = ""
-    queryString = ""
-    minAirdate = ""
-    maxAirdate = ""
     if request.method == "POST" and request.form['submit'] == 'Find':
+        Questions = ["Question"]
+        Points = ["Points"]
+        Answers = ["Answer"]
+        Categories = ["Category"]
+        Airdates = ["Air Date"]
+        information = ""
+        queryString = ""
+        minAirdate = ""
+        maxAirdate = ""
         maxCount = request.form['maxCount']
         keyword = request.form['keyword']
         difficulty = request.form['difficulty']
@@ -35,11 +40,6 @@ def search():
         minAirdate = request.form['minAirdate']
         maxAirdate = request.form['maxAirdate']
 
-        Questions = ["Question"]
-        Points = ["Value"]
-        Answers = ["Answer"]
-        Categories = ["Category"]
-        Airdates = ["Air Date"]
         count = 0
         index = 0
         queryString = "?"
@@ -86,14 +86,16 @@ def search():
                     Points.append(information[index]["value"])
                     Answers.append(information[index]["answer"])
                     Airdates.append(information[index]["airdate"][0:10])
+
                     count+=1
             else:
-                Categories.append(information[index]["category"]["title"])
-                Questions.append(information[index]["question"])
-                Points.append(information[index]["value"])
-                Answers.append(information[index]["answer"])
-                Airdates.append(information[index]["airdate"][0:10])
-                count+=1
+                if information[index]["question"] != "":
+                    Categories.append(information[index]["category"]["title"])
+                    Questions.append(information[index]["question"])
+                    Points.append(information[index]["value"])
+                    Answers.append(information[index]["answer"])
+                    Airdates.append(information[index]["airdate"][0:10])
+                    count+=1
             index+=1
             if index >= len(information):
                 index=0
@@ -101,11 +103,31 @@ def search():
                 information = get(queryString+str(offsetSearch))
                 if information == []:
                     return render_template("search.html", airdates = Airdates, categories = Categories, questions = Questions, points = Points, answers = Answers, title = 'Search', len = len(Questions))
+    elif request.method == "POST":
+        FavoriteQuestions.append(request.form["questionEntry"])
+        FavoriteCategories.append(request.form["categoryEntry"])
+        FavoriteAnswers.append(request.form["answerEntry"])
+        FavoriteAirdates.append(request.form["airdateEntry"])
+        FavoritePoints.append(request.form["pointEntry"])
+        return '', 204
+    else:
+        Questions = ["Question"]
+        Points = ["Points"]
+        Answers = ["Answer"]
+        Categories = ["Category"]
+        Airdates = ["Air Date"]
     return render_template("search.html", airdates = Airdates, categories = Categories, questions = Questions, points = Points, answers = Answers, title = 'Search', len = len(Questions))
 
-@app.route("/favorites")
+
+@app.route("/favorites", methods = ['GET','POST'])
 def favorites():
-    return render_template('favorites.html', title='Favorites')
+    if request.method == "POST" and request.form['submit'] == 'Remove':
+        FavoriteQuestions.remove(request.form["fquestionEntry"])
+        FavoriteAirdates.remove(request.form["fairdateEntry"])
+        FavoritePoints.remove(request.form["fpointEntry"])
+        FavoriteAnswers.remove(request.form["fanswerEntry"])
+        FavoriteCategories.remove(request.form["fcategoryEntry"])
+    return render_template("favorites.html", airdates = FavoriteAirdates, categories = FavoriteCategories, questions = FavoriteQuestions, points = FavoritePoints, answers = FavoriteAnswers, title = 'Favorites', len = len(FavoriteQuestions))
 
 if __name__ == '__main__':
     app.run(debug=True)

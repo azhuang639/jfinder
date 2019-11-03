@@ -37,6 +37,21 @@
     <div class = "entry">
         {{airdates[i]}}
     </div>
+    {% if i == 0 %}
+    <div class = "entry">
+        Fave?
+    </div>
+    {% else %}
+    <form method = "post">
+        <input class = "btn btn-default saveButton" type = "submit" name = "submit" value = "Save">
+        <input value = "{{questions[i]}}" type="hidden" name="questionEntry">
+        <input value = "{{categories[i]}}" type="hidden" name="categoryEntry">
+        <input value = "{{points[i]}}" type="hidden" name="pointEntry">
+        <input value = "{{answers[i]}}" type= "hidden" name="answerEntry">
+        <input value = "{{airdates[i]}}" type= "hidden" name="airdateEntry">
+    </form>
+    {% endif %}
+
 </div>
 {%endfor%}
 <div class = "bottomSpace"></div>
